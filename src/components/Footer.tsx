@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Logo } from "./Logo";
 
 export function Footer() {
   return (
@@ -6,10 +7,8 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="grid gap-10 md:grid-cols-3">
           <div>
-            <div className="mb-3 flex items-center gap-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-sm font-bold">
-                SG
-              </span>
+            <div className="mb-3 flex items-center gap-2.5">
+              <Logo size="sm" />
               <span className="font-semibold">Sandvika Gjenbruk</span>
             </div>
             <p className="text-sm text-white/80 leading-relaxed">
@@ -19,7 +18,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-white/60">
+            <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-accent">
               Finn oss
             </h3>
             <ul className="space-y-2 text-sm text-white/90">
@@ -55,7 +54,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-white/60">
+            <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-accent">
               Hurtiglenker
             </h3>
             <ul className="space-y-2 text-sm">
@@ -78,8 +77,13 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-white/15 pt-6 text-center text-xs text-white/50">
-          © {new Date().getFullYear()} Sandvika Gjenbruk. Alle rettigheter forbeholdt.
+        <div className="mt-10 flex flex-col items-center gap-2 border-t border-white/15 pt-6 text-center text-xs text-white/50">
+          <div className="flex items-center gap-2 opacity-70">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="text-accent">
+              <path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17.3 5.7 21.4 8 14 2 9.4h7.6z" />
+            </svg>
+            <span>© {new Date().getFullYear()} Sandvika Gjenbruk</span>
+          </div>
         </div>
       </div>
     </footer>

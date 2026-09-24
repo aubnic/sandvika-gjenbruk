@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { Logo } from "./Logo";
 
 const nav = [
   { href: "/", label: "Hjem" },
@@ -16,14 +17,12 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/80 bg-background/90 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-        <Link href="/" className="group flex items-center gap-2">
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-white text-lg font-bold shadow-sm transition group-hover:bg-primary-light">
-            SG
-          </span>
+    <header className="sticky top-0 z-50 border-b border-border/80 bg-background/92 backdrop-blur-md">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6">
+        <Link href="/" className="group flex items-center gap-2.5">
+          <Logo size="md" />
           <div className="leading-tight">
-            <span className="block font-semibold tracking-tight text-foreground">
+            <span className="block font-semibold tracking-tight text-foreground group-hover:text-primary transition">
               Sandvika Gjenbruk
             </span>
             <span className="hidden text-xs text-muted sm:block">
@@ -37,7 +36,8 @@ export function Header() {
             const active =
               item.href === "/"
                 ? pathname === "/"
-                : pathname.startsWith(item.href.split("#")[0]) && item.href !== "/";
+                : pathname.startsWith(item.href.split("#")[0]) &&
+                  item.href !== "/";
             return (
               <Link
                 key={item.href}
@@ -45,7 +45,7 @@ export function Header() {
                 className={`rounded-full px-4 py-2 text-sm font-medium transition ${
                   active
                     ? "bg-primary/10 text-primary"
-                    : "text-muted hover:bg-accent/20 hover:text-foreground"
+                    : "text-muted hover:bg-accent/15 hover:text-foreground"
                 }`}
               >
                 {item.label}
@@ -77,27 +77,25 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-border bg-background px-4 py-3 md:hidden">
-          <nav className="flex flex-col gap-1">
-            {nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-sm font-medium text-foreground hover:bg-accent/15"
-              >
-                {item.label}
-              </Link>
-            ))}
+        <nav className="border-t border-border bg-card px-4 py-3 md:hidden">
+          {nav.map((item) => (
             <Link
-              href="/admin"
+              key={item.href}
+              href={item.href}
               onClick={() => setOpen(false)}
-              className="rounded-lg px-3 py-2.5 text-sm text-muted"
+              className="block rounded-lg px-3 py-2.5 text-sm font-medium text-foreground hover:bg-primary/5"
             >
-              Admin
+              {item.label}
             </Link>
-          </nav>
-        </div>
+          ))}
+          <Link
+            href="/admin"
+            onClick={() => setOpen(false)}
+            className="mt-1 block rounded-lg px-3 py-2.5 text-sm text-muted hover:bg-primary/5"
+          >
+            Admin
+          </Link>
+        </nav>
       )}
     </header>
   );
