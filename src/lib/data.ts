@@ -56,6 +56,18 @@ export async function deleteItem(id: string): Promise<void> {
   await saveStoreData(data);
 }
 
+export async function updateItem(
+  id: string,
+  updates: Partial<Omit<Item, "id" | "createdAt">>
+): Promise<Item | null> {
+  const data = await getStoreData();
+  const idx = data.items.findIndex((i) => i.id === id);
+  if (idx === -1) return null;
+  data.items[idx] = { ...data.items[idx], ...updates };
+  await saveStoreData(data);
+  return data.items[idx];
+}
+
 export async function addCategory(name: string): Promise<Category> {
   const data = await getStoreData();
   const slug = name
