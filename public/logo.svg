@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <circle cx="200" cy="200" r="196" fill="#f7f4ec" stroke="#3d4a35" stroke-width="5"/>
+  <defs>
+    <path id="arcTop" d="M 70,200 A 130,130 0 0,1 330,200"/>
+    <path id="arcBot" d="M 330,200 A 130,130 0 0,1 70,200"/>
+  </defs>
+  <text fill="#3d4a35" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700" letter-spacing="8">
+    <textPath href="#arcTop" startOffset="50%" text-anchor="middle">SANDVIKA</textPath>
+  </text>
+  <text fill="#3d4a35" font-family="Georgia, 'Times New Roman', serif" font-size="32" font-weight="700" letter-spacing="5">
+    <textPath href="#arcBot" startOffset="50%" text-anchor="middle">GJENBRUK</textPath>
+  </text>
+  <text x="55" y="208" fill="#3d4a35" font-family="system-ui,sans-serif" font-size="10" font-weight="600" letter-spacing="2" text-anchor="middle" transform="rotate(-90 55 208)">GI TING</text>
+  <line x1="68" y1="160" x2="68" y2="175" stroke="#3d4a35" stroke-width="1.5"/>
+  <line x1="68" y1="235" x2="68" y2="250" stroke="#3d4a35" stroke-width="1.5"/>
+  <text x="345" y="208" fill="#3d4a35" font-family="system-ui,sans-serif" font-size="10" font-weight="600" letter-spacing="2" text-anchor="middle" transform="rotate(90 345 208)">NYTT LIV</text>
+  <line x1="332" y1="160" x2="332" y2="175" stroke="#3d4a35" stroke-width="1.5"/>
+  <line x1="332" y1="235" x2="332" y2="250" stroke="#3d4a35" stroke-width="1.5"/>
+  <g transform="translate(200,200)">
+    <path d="M-15,-50 L28,-28 L18,-12 L-8,-28 L-22,-8 L-40,-25 Z" fill="#7a8f6a"/>
+    <path d="M-45,20 L-22,52 L-5,38 L-22,18 L0,5 L-18,-15 Z" fill="#3d4a35"/>
+    <path d="M40,12 L12,52 L-2,38 L18,15 L5,-8 L32,-8 Z" fill="#8a9b7a"/>
+    <g transform="translate(10,5)">
+      <path d="M0,22 Q10,0 24,-22" stroke="#5a6b52" stroke-width="1.6" fill="none"/>
+      <ellipse cx="5" cy="10" rx="4.5" ry="7.5" fill="#7a8f6a" transform="rotate(-30 5 10)"/>
+      <ellipse cx="12" cy="-2" rx="4.5" ry="7.5" fill="#8a9b7a" transform="rotate(-5 12 -2)"/>
+      <ellipse cx="18" cy="-14" rx="4" ry="6.5" fill="#6b7d5c" transform="rotate(15 18 -14)"/>
+      <ellipse cx="9" cy="-6" rx="3.5" ry="6" fill="#7a8f6a" transform="rotate(-45 9 -6)"/>
+      <ellipse cx="15" cy="6" rx="3.5" ry="5.5" fill="#8a9b7a" transform="rotate(25 15 6)"/>
+    </g>
+  </g>
+</svg>

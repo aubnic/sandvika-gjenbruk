@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f7f4ed;
-  --foreground: #2f3d2e;
-  --primary: #3d5a40;
-  --primary-light: #5a7a5c;
-  --accent: #7a9a6e;
-  --accent-dark: #5c7a52;
-  --muted: #7a8478;
+  --background: #f7f4ec;
+  --foreground: #2f3d2c;
+  --primary: #3d4a35;
+  --primary-light: #5a6b52;
+  --accent: #8a9b7a;
+  --accent-dark: #6b7d5c;
+  --muted: #7a8574;
   --card: #fffcf7;
-  --border: #e0e5d9;
+  --border: #e5e0d4;
 }
 
 @theme inline {
@@ -48,18 +48,11 @@ body {
 }
 .item-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px -8px rgba(61, 90, 64, 0.15);
+  box-shadow: 0 12px 24px -8px rgba(61, 74, 53, 0.15);
 }
 
 .hero-pattern {
-  background-image: radial-gradient(
-    circle at 20% 50%,
-    rgba(122, 154, 110, 0.1) 0%,
-    transparent 50%
-  ),
-  radial-gradient(
-    circle at 80% 20%,
-    rgba(61, 90, 64, 0.06) 0%,
-    transparent 40%
-  );
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(138, 155, 122, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(61, 74, 53, 0.06) 0%, transparent 40%);
 }
