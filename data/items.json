@@ -1,0 +1,66 @@
+{
+  "categories": [
+    { "id": "mobler", "name": "Møbler", "slug": "mobler" },
+    { "id": "porselen", "name": "Porselen & Glass", "slug": "porselen" },
+    { "id": "interior", "name": "Interiør", "slug": "interior" },
+    { "id": "leker", "name": "Leker & Spill", "slug": "leker" },
+    { "id": "smykker", "name": "Smykker", "slug": "smykker" },
+    { "id": "annet", "name": "Annet", "slug": "annet" }
+  ],
+  "items": [
+    {
+      "id": "1",
+      "title": "Vintage stol i eik",
+      "description": "Fin gammel stol med god patina. Solid og stabil.",
+      "price": 450,
+      "categoryId": "mobler",
+      "image": "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=600&h=600&fit=crop",
+      "createdAt": "2025-08-20T10:00:00Z"
+    },
+    {
+      "id": "2",
+      "title": "Porselensservise – 12 deler",
+      "description": "Elegant hvitt porselen med blå kant. Nesten komplett sett.",
+      "price": 320,
+      "categoryId": "porselen",
+      "image": "https://images.unsplash.com/photo-1578500494198-374bba04b5e1?w=600&h=600&fit=crop",
+      "createdAt": "2025-08-21T11:00:00Z"
+    },
+    {
+      "id": "3",
+      "title": "Ullteppe – 200x150 cm",
+      "description": "Mykt ullteppe i dempede jordtoner. Lite brukt.",
+      "price": 890,
+      "categoryId": "interior",
+      "image": "https://images.unsplash.com/photo-1600166898405-da9535204843?w=600&h=600&fit=crop",
+      "createdAt": "2025-08-22T09:30:00Z"
+    },
+    {
+      "id": "4",
+      "title": "Brettspill-samling",
+      "description": "Flere klassiske brettspill i god stand. Perfekt for kvelder.",
+      "price": 150,
+      "categoryId": "leker",
+      "image": "https://images.unsplash.com/photo-1611996575749-79a3a3aaeac0?w=600&h=600&fit=crop",
+      "createdAt": "2025-08-23T14:00:00Z"
+    },
+    {
+      "id": "5",
+      "title": "Sølvarmbånd med stein",
+      "description": "Elegant armbånd i sølv med farget stein. Vintage-look.",
+      "price": 280,
+      "categoryId": "smykker",
+      "image": "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&h=600&fit=crop",
+      "createdAt": "2025-08-24T12:00:00Z"
+    },
+    {
+      "id": "6",
+      "title": "Gammel kommode",
+      "description": "Romslig kommode med tre skuffer. Original maling.",
+      "price": 1200,
+      "categoryId": "mobler",
+      "image": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=600&fit=crop",
+      "createdAt": "2025-08-25T08:00:00Z"
+    }
+  ]
+}
