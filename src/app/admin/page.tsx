@@ -12,11 +12,14 @@ export default function AdminPage() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [items, setItems] = useState<Item[]>([]);
   const [loading, setLoading] = useState(false);
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [categoryId, setCategoryId] = useState("");
   const [image, setImage] = useState("");
+  const [editingId, setEditingId] = useState<string | null>(null);
+
   const [newCatName, setNewCatName] = useState("");
 
   useEffect(() => {
@@ -38,7 +41,9 @@ export default function AdminPage() {
         const data = await res.json();
         setCategories(data.categories || []);
         setItems(data.items || []);
-        if (data.categories?.length) setCategoryId(data.categories[0].id);
+        if (data.categories?.length && !categoryId) {
+          setCategoryId(data.categories[0].id);
+        }
       }
     } catch {
       setError("Kunne ikke hente data");
@@ -68,33 +73,72 @@ export default function AdminPage() {
     setPassword("");
   }
 
-  async function handleAddItem(e: FormEvent) {
+  function resetForm() {
+    setTitle("");
+    setDescription("");
+    setPrice("");
+    setImage("");
+    setEditingId(null);
+    if (categories.length) setCategoryId(categories[0].id);
+  }
+
+  function startEdit(item: Item) {
+    setEditingId(item.id);
+    setTitle(item.title);
+    setDescription(item.description);
+    setPrice(String(item.price));
+    setCategoryId(item.categoryId);
+    setImage(item.image || "");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  async function handleSubmitItem(e: FormEvent) {
     e.preventDefault();
     setError("");
-    const res = await fetch("/api/items", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-admin-password": password,
-      },
-      body: JSON.stringify({
-        title,
-        description,
-        price: Number(price),
-        categoryId,
-        image: image || undefined,
-      }),
-    });
-    if (res.ok) {
-      const item = await res.json();
-      setItems((prev) => [item, ...prev]);
-      setTitle("");
-      setDescription("");
-      setPrice("");
-      setImage("");
+    const payload = {
+      title,
+      description,
+      price: Number(price),
+      categoryId,
+      image: image || undefined,
+    };
+
+    if (editingId) {
+      const res = await fetch("/api/items", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-password": password,
+        },
+        body: JSON.stringify({ id: editingId, ...payload }),
+      });
+      if (res.ok) {
+        const updated = await res.json();
+        setItems((prev) =>
+          prev.map((i) => (i.id === editingId ? updated : i))
+        );
+        resetForm();
+      } else {
+        const err = await res.json();
+        setError(err.error || "Kunne ikke lagre endringer");
+      }
     } else {
-      const err = await res.json();
-      setError(err.error || "Noe gikk galt");
+      const res = await fetch("/api/items", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-password": password,
+        },
+        body: JSON.stringify(payload),
+      });
+      if (res.ok) {
+        const item = await res.json();
+        setItems((prev) => [item, ...prev]);
+        resetForm();
+      } else {
+        const err = await res.json();
+        setError(err.error || "Noe gikk galt");
+      }
     }
   }
 
@@ -108,7 +152,10 @@ export default function AdminPage() {
       },
       body: JSON.stringify({ id }),
     });
-    if (res.ok) setItems((prev) => prev.filter((i) => i.id !== id));
+    if (res.ok) {
+      setItems((prev) => prev.filter((i) => i.id !== id));
+      if (editingId === id) resetForm();
+    }
   }
 
   async function handleAddCategory(e: FormEvent) {
@@ -203,8 +250,21 @@ export default function AdminPage() {
 
       <div className="grid gap-10 lg:grid-cols-2">
         <section className="rounded-2xl border border-border bg-card p-6 shadow-sm">
-          <h2 className="text-lg font-semibold">Legg ut nytt objekt</h2>
-          <form onSubmit={handleAddItem} className="mt-4 space-y-4">
+          <div className="flex items-center justify-between gap-2">
+            <h2 className="text-lg font-semibold">
+              {editingId ? "Rediger objekt" : "Legg ut nytt objekt"}
+            </h2>
+            {editingId && (
+              <button
+                type="button"
+                onClick={resetForm}
+                className="text-xs text-muted hover:text-primary hover:underline"
+              >
+                Avbryt redigering
+              </button>
+            )}
+          </div>
+          <form onSubmit={handleSubmitItem} className="mt-4 space-y-4">
             <div>
               <label className="block text-sm font-medium">Tittel *</label>
               <input
@@ -268,7 +328,7 @@ export default function AdminPage() {
               type="submit"
               className="w-full rounded-full bg-primary py-2.5 text-sm font-semibold text-white hover:bg-primary-light"
             >
-              Publiser objekt
+              {editingId ? "Lagre endringer" : "Publiser objekt"}
             </button>
           </form>
         </section>
@@ -340,7 +400,9 @@ export default function AdminPage() {
                   return (
                     <tr
                       key={item.id}
-                      className="border-b border-border last:border-0"
+                      className={`border-b border-border last:border-0 ${
+                        editingId === item.id ? "bg-primary/5" : ""
+                      }`}
                     >
                       <td className="px-4 py-3">
                         <div className="font-medium">{item.title}</div>
@@ -355,12 +417,20 @@ export default function AdminPage() {
                         {item.price.toLocaleString("nb-NO")} kr
                       </td>
                       <td className="px-4 py-3 text-right">
-                        <button
-                          onClick={() => handleDeleteItem(item.id)}
-                          className="text-xs text-red-600 hover:underline"
-                        >
-                          Slett
-                        </button>
+                        <div className="flex justify-end gap-3">
+                          <button
+                            onClick={() => startEdit(item)}
+                            className="text-xs text-primary hover:underline"
+                          >
+                            Rediger
+                          </button>
+                          <button
+                            onClick={() => handleDeleteItem(item.id)}
+                            className="text-xs text-red-600 hover:underline"
+                          >
+                            Slett
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   );
