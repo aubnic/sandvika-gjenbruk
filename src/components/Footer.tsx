@@ -27,7 +27,7 @@ export function Footer() {
               <li>Sandvika, Bærum</li>
               <li className="pt-1">
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/sandvikagjenbruk"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 hover:text-accent transition"
@@ -40,7 +40,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://facebook.com"
+                  href="https://www.facebook.com/p/Sandvika-Gjenbruk-61591488455336/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 hover:text-accent transition"
