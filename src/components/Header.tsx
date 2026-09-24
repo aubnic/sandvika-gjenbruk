@@ -17,8 +17,8 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/80 bg-background/92 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6">
+    <header className="sticky top-0 z-50 border-b border-border/80 bg-background/90 backdrop-blur-md">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
         <Link href="/" className="group flex items-center gap-2.5">
           <Logo size="md" />
           <div className="leading-tight">
@@ -26,7 +26,7 @@ export function Header() {
               Sandvika Gjenbruk
             </span>
             <span className="hidden text-xs text-muted sm:block">
-              Skatter med historie
+              Gi ting · Nytt liv
             </span>
           </div>
         </Link>
@@ -45,7 +45,7 @@ export function Header() {
                 className={`rounded-full px-4 py-2 text-sm font-medium transition ${
                   active
                     ? "bg-primary/10 text-primary"
-                    : "text-muted hover:bg-accent/15 hover:text-foreground"
+                    : "text-muted hover:bg-accent/20 hover:text-foreground"
                 }`}
               >
                 {item.label}
