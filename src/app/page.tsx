@@ -142,7 +142,7 @@ export default async function HomePage() {
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/sandvikagjenbruk"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-primary transition hover:bg-accent"
@@ -150,7 +150,7 @@ export default async function HomePage() {
               Instagram
             </a>
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/p/Sandvika-Gjenbruk-61591488455336/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-white/40 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
@@ -158,9 +158,6 @@ export default async function HomePage() {
               Facebook
             </a>
           </div>
-          <p className="mt-6 text-sm text-white/60">
-            Erstatt Instagram- og Facebook-lenkene med de ekte profilene når du har dem.
-          </p>
         </div>
       </section>
     </>
